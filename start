@@ -1,0 +1,5 @@
+docker kill fluent
+docker system prune -af
+docker build . -t fluent
+docker run --name fluent -d --env-file env -v /var/lib/docker/containers:/var/lib/docker/containers:ro -v /var/log:/var/log -v /var/run/docker.sock:/var/run/docker.sock fluent
+docker logs -f fluent
